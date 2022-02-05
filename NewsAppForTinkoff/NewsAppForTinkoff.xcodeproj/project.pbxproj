@@ -19,6 +19,7 @@
 		B6D837A327AE893000DB8FC1 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D837A227AE893000DB8FC1 /* NewsViewModel.swift */; };
 		B6D837A627AE8B6D00DB8FC1 /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D837A527AE8B6D00DB8FC1 /* NewsListViewModel.swift */; };
 		B6D837A927AE8E5700DB8FC1 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D837A827AE8E5700DB8FC1 /* HeaderView.swift */; };
+		B6D837AB27AEAF4000DB8FC1 /* ShadowImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D837AA27AEAF4000DB8FC1 /* ShadowImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		B6D837A227AE893000DB8FC1 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		B6D837A527AE8B6D00DB8FC1 /* NewsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewModel.swift; sourceTree = "<group>"; };
 		B6D837A827AE8E5700DB8FC1 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		B6D837AA27AEAF4000DB8FC1 /* ShadowImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				B6D837A827AE8E5700DB8FC1 /* HeaderView.swift */,
+				B6D837AA27AEAF4000DB8FC1 /* ShadowImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				B6D837A327AE893000DB8FC1 /* NewsViewModel.swift in Sources */,
 				B6D8379C27AE6EC200DB8FC1 /* News.swift in Sources */,
 				B6D8378627AD991500DB8FC1 /* SceneDelegate.swift in Sources */,
+				B6D837AB27AEAF4000DB8FC1 /* ShadowImageView.swift in Sources */,
 				B6D837A627AE8B6D00DB8FC1 /* NewsListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
