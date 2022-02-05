@@ -11,7 +11,12 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .white
+        
+        // из кэша
+        NetworkManager.shared.getNews { (news) in
+            guard let news = news else { return }
+        }
     }
 
 
