@@ -18,6 +18,7 @@
 		B6D8379F27AE715600DB8FC1 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D8379E27AE715600DB8FC1 /* NetworkManager.swift */; };
 		B6D837A327AE893000DB8FC1 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D837A227AE893000DB8FC1 /* NewsViewModel.swift */; };
 		B6D837A627AE8B6D00DB8FC1 /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D837A527AE8B6D00DB8FC1 /* NewsListViewModel.swift */; };
+		B6D837A927AE8E5700DB8FC1 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D837A827AE8E5700DB8FC1 /* HeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		B6D8379E27AE715600DB8FC1 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		B6D837A227AE893000DB8FC1 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		B6D837A527AE8B6D00DB8FC1 /* NewsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewModel.swift; sourceTree = "<group>"; };
+		B6D837A827AE8E5700DB8FC1 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 		B6D8378227AD991500DB8FC1 /* NewsAppForTinkoff */ = {
 			isa = PBXGroup;
 			children = (
+				B6D837A727AE8E3400DB8FC1 /* Views */,
 				B6D837A427AE894700DB8FC1 /* Delegates */,
 				B6D837A127AE890C00DB8FC1 /* ViewModels */,
 				B6D8379D27AE713B00DB8FC1 /* Services */,
@@ -128,6 +131,14 @@
 				B6D8378527AD991500DB8FC1 /* SceneDelegate.swift */,
 			);
 			path = Delegates;
+			sourceTree = "<group>";
+		};
+		B6D837A727AE8E3400DB8FC1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B6D837A827AE8E5700DB8FC1 /* HeaderView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6D8379F27AE715600DB8FC1 /* NetworkManager.swift in Sources */,
+				B6D837A927AE8E5700DB8FC1 /* HeaderView.swift in Sources */,
 				B6D8378827AD991500DB8FC1 /* ViewController.swift in Sources */,
 				B6D8378427AD991500DB8FC1 /* AppDelegate.swift in Sources */,
 				B6D8379827AE6CB800DB8FC1 /* API.swift in Sources */,
