@@ -12,7 +12,19 @@ final class NewsTableViewCell: UITableViewCell {
     var newsVM: NewsViewModel? {
         didSet {
             if let newsVM = newsVM {
-                
+                titleLabel.text = newsVM.title
+                // установить счетчик и преобразователь в стринг
+                numberOfClicsLabel.text = "0"
+                NetworkManager.shared.getImage(urlString: newsVM.urlToImage) { (data) in
+                    guard let data = data else {
+                        // картинка когда нет интернета
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        self.newsImage.image = UIImage(data: data)
+                    }
+
+                }
             }
         }
     }
@@ -50,6 +62,10 @@ final class NewsTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
         setupView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func setupView() {

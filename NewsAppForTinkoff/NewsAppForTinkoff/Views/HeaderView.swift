@@ -31,6 +31,7 @@ final class HeaderView: UIView {
     }()
     
     // optional
+    // а надо ли
     private lazy var plusImage: UIImageView = {
         let v = UIImageView()
         v.translatesAutoresizingMaskIntoConstraints = false
