@@ -46,4 +46,34 @@ class NetworkManager {
             newsPack == nil ? completion(nil) : completion(newsPack!.articles)
         }.resume()
     }
+    
+    func getImage(urlString: String, completion: @escaping (Data?) -> Void) {
+        guard let url = URL(string: urlString) else {
+            // default image
+            completion(nil)
+            return
+        }
+        
+        if let cachedImage = imageCache.object(forKey: NSString(string: urlString)) {
+            completion(cachedImage as Data)
+        } else {
+            URLSession.shared.dataTask(with: url) { (data, response, error) in
+                guard error == nil else {
+                    // error message
+                    completion(nil)
+                    return
+                }
+                guard let data = data else {
+                    // default image
+                    completion(nil)
+                    return
+                }
+                // кэшируем картинку в 1 раз при запуске
+                self.imageCache.setObject(data as NSData, forKey: NSString(string: urlString))
+                completion(data)
+            }.resume()
+        }
+    }
+    
+    
 }

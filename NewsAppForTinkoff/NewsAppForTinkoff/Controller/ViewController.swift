@@ -14,11 +14,13 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         
         // из кэша
-        NetworkManager.shared.getNews { (news) in
-            guard let news = news else { return }
-        }
+//        NetworkManager.shared.getNews { (news) in
+//            guard let news = news else { return }
+//            print(news[0].description)
+//        }
+        
+        
+        
     }
-
-
 }
 
