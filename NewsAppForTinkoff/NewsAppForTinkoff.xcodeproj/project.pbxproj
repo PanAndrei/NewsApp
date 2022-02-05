@@ -20,6 +20,7 @@
 		B6D837A627AE8B6D00DB8FC1 /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D837A527AE8B6D00DB8FC1 /* NewsListViewModel.swift */; };
 		B6D837A927AE8E5700DB8FC1 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D837A827AE8E5700DB8FC1 /* HeaderView.swift */; };
 		B6D837AB27AEAF4000DB8FC1 /* ShadowImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D837AA27AEAF4000DB8FC1 /* ShadowImageView.swift */; };
+		B6D837AD27AEB38E00DB8FC1 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D837AC27AEB38E00DB8FC1 /* NewsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		B6D837A527AE8B6D00DB8FC1 /* NewsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewModel.swift; sourceTree = "<group>"; };
 		B6D837A827AE8E5700DB8FC1 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		B6D837AA27AEAF4000DB8FC1 /* ShadowImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowImageView.swift; sourceTree = "<group>"; };
+		B6D837AC27AEB38E00DB8FC1 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 			children = (
 				B6D837A827AE8E5700DB8FC1 /* HeaderView.swift */,
 				B6D837AA27AEAF4000DB8FC1 /* ShadowImageView.swift */,
+				B6D837AC27AEB38E00DB8FC1 /* NewsTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6D8379F27AE715600DB8FC1 /* NetworkManager.swift in Sources */,
+				B6D837AD27AEB38E00DB8FC1 /* NewsTableViewCell.swift in Sources */,
 				B6D837A927AE8E5700DB8FC1 /* HeaderView.swift in Sources */,
 				B6D8378827AD991500DB8FC1 /* ViewController.swift in Sources */,
 				B6D8378427AD991500DB8FC1 /* AppDelegate.swift in Sources */,
