@@ -11,6 +11,8 @@ import SafariServices
 class ViewController: UIViewController {
     
     var viewModel = NewsListViewModel()
+    ///
+    var refreshControl: UIRefreshControl!
     
     private lazy var headerView: HeaderView = {
         let v = HeaderView(fontSize: 32)
@@ -26,12 +28,13 @@ class ViewController: UIViewController {
         v.dataSource = self
         return v
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
         fetchNews()
+        setupRefresh()
     }
     
     
@@ -66,11 +69,33 @@ class ViewController: UIViewController {
         ])
     }
     
+    
     func fetchNews() {
         viewModel.getNews { (_) in
             self.tableView.reloadData()
         }
     }
+    
+    func setupRefresh() {
+        refreshControl = {
+            let refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action:
+                                        #selector(ViewController.handleRefresh(_:)),
+                                     for: UIControl.Event.valueChanged)
+            refreshControl.tintColor = UIColor.red
+            
+            return refreshControl
+        }()
+        refreshControl.attributedTitle = NSAttributedString(string: "reload")
+        tableView.addSubview(refreshControl)
+    }
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        fetchNews()
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
+    }
+    
     
 }
 
@@ -86,7 +111,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         let news = viewModel.newsVM[indexPath.row]
         cell?.newsVM = news
-//        return cell ?? UITableViewCell()
+        //        return cell ?? UITableViewCell()
         // костыль
         return indexPath.row < 21 ? cell ?? UITableViewCell() : UITableViewCell()
     }
@@ -106,6 +131,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         viewModel.newsVM[indexPath.row].addShow()
         reloadInputViews()
+        
     }
     
 }
