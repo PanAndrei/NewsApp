@@ -12,13 +12,8 @@ class ViewController: UIViewController {
     
     var viewModel = NewsListViewModel()
     var networkManager = NetworkManager()
-    ///
     var refreshControl: UIRefreshControl!
-    
-//    var newsPack = viewModel.newsVM
-    //
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("news.plist")
-//
     
     private lazy var headerView: HeaderView = {
         let v = HeaderView(fontSize: 32)
@@ -35,42 +30,26 @@ class ViewController: UIViewController {
         return v
     }()
     
-    //
-//    override func loadView() {
-//        super.loadView()
-//        fetchNews()
-//    }
-    //
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
         fetchNews()
-
-        
-        setupRefresh()
         //
-        
-//        setButtonRefresh()
+        loadFromUD()
+        setupRefresh()
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
-//        fetchNews()
     }
-    
-    
-    
     
     func setupView() {
         view.backgroundColor = .white
         view.addSubview(headerView)
         view.addSubview(tableView)
-        //
-//        view.addSubview(setButtonRefresh())
         
         setupConstraints()
     }
@@ -90,16 +69,11 @@ class ViewController: UIViewController {
         ])
     }
     
-    
     func fetchNews() {
         viewModel.getNews { (_) in
             self.tableView.reloadData()
             self.saveInUD()
         }
-//        viewModel.saveInUD()
-//        saveInUD()
-//        saveInUD()
-//        self.tableView.reloadData()
     }
     
     func setupRefresh() {
@@ -122,42 +96,29 @@ class ViewController: UIViewController {
         self.tableView.reloadData()
         refreshControl.endRefreshing()
     }
-    
-
-    
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // 20 news
         viewModel.newsVM.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.reuseID, for: indexPath) as? NewsTableViewCell
-        // достатть из кэша
-        
-
         let news = viewModel.newsVM[indexPath.row]
         
-
-        
-//        let news = viewModel.newsVM[0]
         cell?.newsVM = news
         return cell ?? UITableViewCell()
-//        return indexPath.row < 21 ? cell ?? UITableViewCell() : UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let news = viewModel.newsVM[indexPath.row]
         guard let url = URL(string: news.url) else {
-            // добавить кэш
             return
         }
         
         let config = SFSafariViewController.Configuration()
         let safariViewController = SFSafariViewController(url: url, configuration: config)
-        // or .formScreen
         safariViewController.modalPresentationStyle = .fullScreen
         present(safariViewController, animated: true)
         
@@ -166,16 +127,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         reloadInputViews()
         
     }
-    
 }
 
-//
-//
-//
-
 extension ViewController {
-    
-
     
     func saveInUD() {
         let encoder = PropertyListEncoder()
@@ -200,5 +154,4 @@ extension ViewController {
             }
         }
     }
-    
 }

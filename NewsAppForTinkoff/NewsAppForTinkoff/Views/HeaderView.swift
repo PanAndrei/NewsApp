@@ -9,14 +9,12 @@ import UIKit
 
 final class HeaderView: UIView {
     
-    // подумать про изменение шрифта
     private var fontSize: CGFloat
     
     private lazy var headingLabel: UILabel = {
         let v = UILabel()
         v.translatesAutoresizingMaskIntoConstraints = false
-        // придумать заголовок
-        v.text = "News"
+        v.text = "Hot News"
         v.font = UIFont.boldSystemFont(ofSize: fontSize)
         return v
     }()
@@ -29,42 +27,20 @@ final class HeaderView: UIView {
         v.image = UIImage(systemName: "globe.europe.africa", withConfiguration: config)?.withRenderingMode(.alwaysOriginal)
         return v
     }()
-    
-   //
-    //
-    //
-//    private lazy var buttonRefresh: UIButton = {
-//        let button = UIButton()
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        let config = UIImage.SymbolConfiguration(pointSize: fontSize, weight: .bold)
-//        button.setImage(UIImage(systemName: "goforward", withConfiguration: config)?.withRenderingMode(.alwaysOriginal), for: .normal)
-//        button.contentMode = .scaleAspectFit
-////
-//        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-//        
-//        return button
-//    }()
-//    
-   
-    
+     
     private lazy var subheadlineLabel: UILabel = {
         let v = UILabel()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.font = v.font.withSize(fontSize)
-        // change this name
-        // news category
-        v.text = "Aps name"
+        v.text = "News App"
         v.textColor = .gray
         return v
     }()
     
     private lazy var headerStackView: UIStackView = {
-        // plusimage
         let v = UIStackView(arrangedSubviews: [globeImage, headingLabel])
         v.translatesAutoresizingMaskIntoConstraints = false
         v.axis = .horizontal
-        //
-        //
         v.setCustomSpacing(200, after: headingLabel)
         return v
     }()
@@ -101,12 +77,5 @@ final class HeaderView: UIView {
             subheadlineLabel.topAnchor.constraint(equalTo: headerStackView.bottomAnchor, constant: 8),
             subheadlineLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
-        
     }
-    
-    ///
-//    @objc func buttonAction(_ sender: UIButton!) {
-//         print("button pressed")
-//     }
-    
 }

@@ -8,49 +8,30 @@
 import Foundation
 
 class NetworkManager {
-    // кэшированик картинок
     let imageCache = NSCache<NSString, NSData>()
     
     static let shared = NetworkManager()
-//    private init() {}
-     init() {}
-
-    
-    // base url
     private let baseURLString = "https://newsapi.org/v2/"
-//     let baseURLString = "https://newsapi.org/v2/"
-
-    // for choose type
     private let USTopHeadline = "everything?q=tesla&from=2022-01-05&sortBy=publishedAt"
-//     let USTopHeadline = "top-headlines?country=us"
-
-    
     private let numberOfNewInPage = 20
-//     let numberOfNewInPage = 20
+    static var currentPage = 1
+    
+    init() {}
 
-   static var currentPage = 1
-    
-    
-    // escaping
-    // отсюда вернуть кэшированные новости если нет интернета или первое соединение
-    // вот тут добавить возможность выбора из категории новостей
     func getNews(completion: @escaping ([News]?) -> Void) {
-        // pagesize
         var urlString = "\(baseURLString)\(USTopHeadline)&apiKey=\(APIKey.key)&pageSize=\(numberOfNewInPage)&page=\(NetworkManager.currentPage)"
+        print(urlString)
         guard let url = URL(string: urlString) else {
             return
-            // from cache
         }
 
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard error == nil else {
-                // обработка ошибок может тут уведомление
                 print("the error is \(error?.localizedDescription)")
                 completion(nil)
                 return
             }
             guard let data = data else {
-                // cache
                 completion(nil)
                 return
             }
@@ -60,11 +41,8 @@ class NetworkManager {
         }.resume()
     }
     
-    ////
     func getImage(urlString: String, completion: @escaping (Data?) -> Void) {
-        ////
         guard let url = URL(string: urlString ) else {
-            // default image
             completion(nil)
             return
         }
@@ -74,16 +52,13 @@ class NetworkManager {
         } else {
             URLSession.shared.dataTask(with: url) { (data, response, error) in
                 guard error == nil else {
-                    // error message
                     completion(nil)
                     return
                 }
                 guard let data = data else {
-                    // default image
                     completion(nil)
                     return
                 }
-                // кэшируем картинку в 1 раз при запуске
                 self.imageCache.setObject(data as NSData, forKey: NSString(string: urlString))
                 completion(data)
             }.resume()

@@ -24,7 +24,6 @@ final class ShadowImageView: UIView {
         return v
     }()
     
-    // baseview
     private lazy var baseView: UIView = {
         let v = UIView()
         
@@ -47,7 +46,6 @@ final class ShadowImageView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        // боработка ошибок
         fatalError("init(coder:) has not been implemented")
     }
     

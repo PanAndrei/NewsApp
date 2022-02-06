@@ -28,12 +28,8 @@ struct NewsViewModel: Codable {
         return news.url ?? ""
     }
     
-    // картинка из установки
     var urlToImage: String {
-//        return news.urlToImage ?? "https://img2.freepng.ru/20180609/guv/kisspng-92-news-newspaper-live-television-express-news-5b1b6ba7a245d3.1810649915285236876647.jpg"
-        
-        return (news.urlToImage) ?? ""
-        
+        return news.urlToImage ?? "https://img2.freepng.ru/20180609/guv/kisspng-92-news-newspaper-live-television-express-news-5b1b6ba7a245d3.1810649915285236876647.jpg"
     }
     
     var numberOfShowes: Int {
@@ -53,27 +49,9 @@ struct NewsViewModel: Codable {
         news.addShow()
     }
     
-    //
     func setCount() {
         news.setNum()
     }
-    
-    //
-    
-    
-    
-    
-    //
-    
-//    var stringShowes: String {
-//        news.setNum()
-//        if news.numberOfShowes == 1 {
-//            return "It was shown \(news.numberOfShowes!) time"
-//        } else {
-//            return "It was shown \(news.numberOfShowes!) times"
-//        }
-//    }
-    
 }
 
 

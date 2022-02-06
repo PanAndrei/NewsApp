@@ -17,7 +17,6 @@ final class NewsTableViewCell: UITableViewCell {
                 
                 NetworkManager.shared.getImage(urlString: newsVM.urlToImage) { (data) in
                     guard let data = data else {
-                        // картинка когда нет интернета
                         return
                     }
                     DispatchQueue.main.async {
@@ -50,7 +49,6 @@ final class NewsTableViewCell: UITableViewCell {
         return v
     }()
     
-    // number of clics
     private lazy var numberOfClicsLabel: UILabel = {
         let v = UILabel()
         v.translatesAutoresizingMaskIntoConstraints = false
@@ -89,7 +87,6 @@ final class NewsTableViewCell: UITableViewCell {
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             titleLabel.topAnchor.constraint(equalTo: newsImage.bottomAnchor, constant: 8),
-//            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
         ])
         
         // number of clics constraint
