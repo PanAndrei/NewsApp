@@ -22,7 +22,6 @@ class NewsListViewModel {
                 self.newsVM = newsVM
                 completion(newsVM)
             }
-            newsVM.map { $0.setCount() }
         }
     }  
 }

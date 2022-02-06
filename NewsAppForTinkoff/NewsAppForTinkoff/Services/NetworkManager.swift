@@ -12,7 +12,8 @@ class NetworkManager {
     
     static let shared = NetworkManager()
     private let baseURLString = "https://newsapi.org/v2/"
-    private let USTopHeadline = "everything?q=tesla&from=2022-01-05&sortBy=publishedAt"
+    private let USTopHeadline = "everything?q=apple&from=2022-02-05&to=2022-02-05&sortBy=popularity"
+
     private let numberOfNewInPage = 20
     static var currentPage = 1
     
@@ -21,6 +22,7 @@ class NetworkManager {
     func getNews(completion: @escaping ([News]?) -> Void) {
         var urlString = "\(baseURLString)\(USTopHeadline)&apiKey=\(APIKey.key)&pageSize=\(numberOfNewInPage)&page=\(NetworkManager.currentPage)"
         print(urlString)
+        
         guard let url = URL(string: urlString) else {
             return
         }

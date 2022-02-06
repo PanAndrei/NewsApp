@@ -11,7 +11,6 @@ struct NewsViewModel: Codable {
     
     var news: News
     
-    // кэширование в юзердефолтс ?
     var author: String {
         return news.author ?? "Unknown author"
     }
@@ -29,28 +28,23 @@ struct NewsViewModel: Codable {
     }
     
     var urlToImage: String {
-        return news.urlToImage ?? "https://img2.freepng.ru/20180609/guv/kisspng-92-news-newspaper-live-television-express-news-5b1b6ba7a245d3.1810649915285236876647.jpg"
+        return news.urlToImage ?? "https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX7434421.jpg" 
     }
     
     var numberOfShowes: Int {
-        return news.numberOfShowes!
+        return news.numberOfShowes
     }
     
     var stringShowes: String {
-        news.setNum()
         if news.numberOfShowes == 1 {
-            return "It was shown \(news.numberOfShowes!) time"
+            return "It was shown \(news.numberOfShowes) time"
         } else {
-            return "It was shown \(news.numberOfShowes!) times"
+            return "It was shown \(news.numberOfShowes) times"
         }
     }
     
     func addShow()  {
         news.addShow()
-    }
-    
-    func setCount() {
-        news.setNum()
     }
 }
 

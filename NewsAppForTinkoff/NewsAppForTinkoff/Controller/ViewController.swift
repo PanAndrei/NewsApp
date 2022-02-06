@@ -35,14 +35,13 @@ class ViewController: UIViewController {
         
         setupView()
         fetchNews()
-        //
-        loadFromUD()
         setupRefresh()
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        loadFromUD()
         tableView.reloadData()
     }
     
@@ -140,7 +139,6 @@ extension ViewController {
         } catch {
             print("error encoding \(error)")
         }
-        
         print("data saved")
     }
     

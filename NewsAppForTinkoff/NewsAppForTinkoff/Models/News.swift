@@ -13,17 +13,12 @@ class News: Codable {
     let description: String?
     let urlToImage: String?
     let url: String?
-    var numberOfShowes: Int?
+    var numberOfShowes = 0
+
     var stringShowes: String?
     
-    func setNum() {
-        if numberOfShowes == nil {
-            numberOfShowes = 0
-        }
-    }
-    
     func addShow() {
-        numberOfShowes! += 1
+        numberOfShowes += 1
     }
 }
 
