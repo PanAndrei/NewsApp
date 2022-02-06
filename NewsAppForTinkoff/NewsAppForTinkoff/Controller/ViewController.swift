@@ -11,6 +11,7 @@ import SafariServices
 class ViewController: UIViewController {
     
     var viewModel = NewsListViewModel()
+    var networkManager = NetworkManager()
     ///
     var refreshControl: UIRefreshControl!
     
@@ -29,11 +30,23 @@ class ViewController: UIViewController {
         return v
     }()
     
+    //
+//    override func loadView() {
+//        super.loadView()
+//        viewModel.saveInUD()
+//    }
+    //
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
         fetchNews()
+        
+        //
+        fetchNews()
+        //
+        
         setupRefresh()
         //
         
@@ -79,6 +92,7 @@ class ViewController: UIViewController {
         viewModel.getNews { (_) in
             self.tableView.reloadData()
         }
+//        viewModel.saveInUD()
     }
     
     func setupRefresh() {
@@ -96,6 +110,7 @@ class ViewController: UIViewController {
     }
 
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        networkManager.nextPage()
         fetchNews()
         self.tableView.reloadData()
         refreshControl.endRefreshing()
@@ -136,13 +151,32 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
 //        viewModel.loadFromUD()
         
-        //
+        // работает но счетчик на ноль сбрасывает
+//        viewModel.loadFromUD()
         let news = viewModel.newsVM[indexPath.row]
+        
+        //
+        
+        
+        //
+        
+//        var newsArr = viewModel.newsVM
+//        var news = viewModel.newsVM[indexPath.row]
+////
+//        if newsArr.isEmpty {
+//            let news = viewModel.newsVM[indexPath.row]
+//            viewModel.saveInUD()
+//        } else {
+//            viewModel.loadFromUD()
+//            let news = viewModel.newsVM[indexPath.row]
+//        }
+        //
+        
 //        let news = viewModel.newsVM[0]
         cell?.newsVM = news
-        //        return cell ?? UITableViewCell()
+        return cell ?? UITableViewCell()
         // костыль
-        return indexPath.row < 21 ? cell ?? UITableViewCell() : UITableViewCell()
+//        return indexPath.row < 21 ? cell ?? UITableViewCell() : UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -164,3 +198,5 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
 }
+
+

@@ -9,7 +9,6 @@ import Foundation
 
 struct NewsViewModel: Codable {
     
-    
     var news: News
     
     // кэширование в юзердефолтс ?
@@ -41,10 +40,6 @@ struct NewsViewModel: Codable {
         return news.numberOfShowes!
     }
     
-    func addShow()  {
-        news.addShow()
-    }
-    
     var stringShowes: String {
         news.setNum()
         if news.numberOfShowes == 1 {
@@ -53,6 +48,31 @@ struct NewsViewModel: Codable {
             return "It was shown \(news.numberOfShowes!) times"
         }
     }
+    
+    func addShow()  {
+        news.addShow()
+    }
+    
+    //
+    func setCount() {
+        news.setNum()
+    }
+    
+    //
+    
+    
+    
+    
+    //
+    
+//    var stringShowes: String {
+//        news.setNum()
+//        if news.numberOfShowes == 1 {
+//            return "It was shown \(news.numberOfShowes!) time"
+//        } else {
+//            return "It was shown \(news.numberOfShowes!) times"
+//        }
+//    }
     
 }
 

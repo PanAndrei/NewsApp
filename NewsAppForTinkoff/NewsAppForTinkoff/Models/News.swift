@@ -25,11 +25,15 @@ class News: Codable {
     func setNum() {
         if numberOfShowes == nil {
             numberOfShowes = 0
-        }
+        } 
+        
+//        numberOfShowes =
     }
     
     func addShow() {
         numberOfShowes! += 1
+        
+        print("was shown \(numberOfShowes)")
     }
     
 }

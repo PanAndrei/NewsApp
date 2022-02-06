@@ -12,18 +12,31 @@ class NetworkManager {
     let imageCache = NSCache<NSString, NSData>()
     
     static let shared = NetworkManager()
-    private init() {}
+//    private init() {}
+     init() {}
+
     
     // base url
     private let baseURLString = "https://newsapi.org/v2/"
+//     let baseURLString = "https://newsapi.org/v2/"
+
     // for choose type
-    private let USTopHeadline = "top-headlines?country=us"
+    private let USTopHeadline = "everything?q=tesla&from=2022-01-05&sortBy=publishedAt"
+//     let USTopHeadline = "top-headlines?country=us"
+
+    
+    private let numberOfNewInPage = 20
+//     let numberOfNewInPage = 20
+
+   static var currentPage = 1
+    
     
     // escaping
     // отсюда вернуть кэшированные новости если нет интернета или первое соединение
     // вот тут добавить возможность выбора из категории новостей
     func getNews(completion: @escaping ([News]?) -> Void) {
-        let urlString = "\(baseURLString)\(USTopHeadline)&apiKey=\(APIKey.key)"
+        // pagesize
+        var urlString = "\(baseURLString)\(USTopHeadline)&apiKey=\(APIKey.key)&pageSize=\(numberOfNewInPage)&page=\(NetworkManager.currentPage)"
         guard let url = URL(string: urlString) else {
             return
             // from cache
@@ -77,5 +90,8 @@ class NetworkManager {
         }
     }
     
-    
+    func nextPage() {
+        NetworkManager.currentPage += 1
+        print("current page is \(NetworkManager.currentPage)")
+    }
 }

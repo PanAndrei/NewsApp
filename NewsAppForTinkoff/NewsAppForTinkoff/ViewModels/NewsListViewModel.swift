@@ -29,14 +29,17 @@ class NewsListViewModel {
             let newsVM = news.map(NewsViewModel.init)
             //
             //
-            self.saveInUD()
+//            self.saveInUD()
             // async для загрузки
             // постраничная загрузка?
             DispatchQueue.main.async {
                 self.newsVM = newsVM
                 completion(newsVM)
             }
+            newsVM.map { $0.setCount() }
+            self.saveInUD()
         }
+//        self.saveInUD()
     }
     
     ///@IBAction func
@@ -52,7 +55,7 @@ class NewsListViewModel {
             print("error encoding \(error)")
         }
         
-        print(dataFilePath)
+        print("data saved")
     }
     
     func loadFromUD() {
