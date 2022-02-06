@@ -30,16 +30,22 @@ final class HeaderView: UIView {
         return v
     }()
     
-    // optional
-    // а надо ли
-//    private lazy var plusImage: UIImageView = {
-//        let v = UIImageView()
-//        v.translatesAutoresizingMaskIntoConstraints = false
-//        v.contentMode = .scaleAspectFit
+   //
+    //
+    //
+//    private lazy var buttonRefresh: UIButton = {
+//        let button = UIButton()
+//        button.translatesAutoresizingMaskIntoConstraints = false
 //        let config = UIImage.SymbolConfiguration(pointSize: fontSize, weight: .bold)
-//        v.image = UIImage(systemName: "plus", withConfiguration: config)?.withRenderingMode(.alwaysOriginal)
-//        return v
+//        button.setImage(UIImage(systemName: "goforward", withConfiguration: config)?.withRenderingMode(.alwaysOriginal), for: .normal)
+//        button.contentMode = .scaleAspectFit
+////
+//        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+//        
+//        return button
 //    }()
+//    
+   
     
     private lazy var subheadlineLabel: UILabel = {
         let v = UILabel()
@@ -57,6 +63,9 @@ final class HeaderView: UIView {
         let v = UIStackView(arrangedSubviews: [globeImage, headingLabel])
         v.translatesAutoresizingMaskIntoConstraints = false
         v.axis = .horizontal
+        //
+        //
+        v.setCustomSpacing(200, after: headingLabel)
         return v
     }()
     
@@ -92,6 +101,12 @@ final class HeaderView: UIView {
             subheadlineLabel.topAnchor.constraint(equalTo: headerStackView.bottomAnchor, constant: 8),
             subheadlineLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+        
     }
+    
+    ///
+//    @objc func buttonAction(_ sender: UIButton!) {
+//         print("button pressed")
+//     }
     
 }

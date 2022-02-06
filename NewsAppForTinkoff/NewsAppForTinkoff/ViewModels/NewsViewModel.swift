@@ -31,7 +31,10 @@ struct NewsViewModel {
     
     // картинка из установки
     var urlToImage: String {
-        return news.urlToImage ?? "https://img2.freepng.ru/20180609/guv/kisspng-92-news-newspaper-live-television-express-news-5b1b6ba7a245d3.1810649915285236876647.jpg"
+//        return news.urlToImage ?? "https://img2.freepng.ru/20180609/guv/kisspng-92-news-newspaper-live-television-express-news-5b1b6ba7a245d3.1810649915285236876647.jpg"
+        
+        return (news.urlToImage) ?? ""
+        
     }
     
     var numberOfShowes: Int {

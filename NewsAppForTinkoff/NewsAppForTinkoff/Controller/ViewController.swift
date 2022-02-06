@@ -35,6 +35,9 @@ class ViewController: UIViewController {
         setupView()
         fetchNews()
         setupRefresh()
+        //
+        
+//        setButtonRefresh()
     }
     
     
@@ -50,6 +53,8 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(headerView)
         view.addSubview(tableView)
+        //
+//        view.addSubview(setButtonRefresh())
         
         setupConstraints()
     }
@@ -83,19 +88,37 @@ class ViewController: UIViewController {
                                         #selector(ViewController.handleRefresh(_:)),
                                      for: UIControl.Event.valueChanged)
             refreshControl.tintColor = UIColor.red
-            
+
             return refreshControl
         }()
         refreshControl.attributedTitle = NSAttributedString(string: "reload")
         tableView.addSubview(refreshControl)
     }
-    
+
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         fetchNews()
         self.tableView.reloadData()
         refreshControl.endRefreshing()
     }
     
+    //
+//    func setButtonRefresh() {
+//         lazy var buttonRefresh: UIButton = {
+//            let button = UIButton()
+//            button.translatesAutoresizingMaskIntoConstraints = false
+//             let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold)
+//            button.setImage(UIImage(systemName: "goforward", withConfiguration: config)?.withRenderingMode(.alwaysOriginal), for: .normal)
+//            button.contentMode = .scaleAspectFit
+//    //
+//            button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+//            
+//            return button
+//        }()
+//    }
+//    
+//    @objc func buttonAction(_ sender: UIButton!) {
+//         print("button pressed")
+//     }
     
 }
 

@@ -47,8 +47,10 @@ class NetworkManager {
         }.resume()
     }
     
+    ////
     func getImage(urlString: String, completion: @escaping (Data?) -> Void) {
-        guard let url = URL(string: urlString) else {
+        ////
+        guard let url = URL(string: urlString ) else {
             // default image
             completion(nil)
             return

@@ -33,7 +33,7 @@ final class NewsTableViewCell: UITableViewCell {
         didSet {
             if let data = newsImageData {
                 newsImage.image = UIImage(data: data)
-            }
+            } 
         }
     }
     

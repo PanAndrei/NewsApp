@@ -27,13 +27,16 @@ final class ShadowImageView: UIView {
     // baseview
     private lazy var baseView: UIView = {
         let v = UIView()
+        
         v.translatesAutoresizingMaskIntoConstraints = false
         v.backgroundColor = .clear
-        v.layer.shadowColor = UIColor.black.cgColor
-        v.layer.shadowOffset = CGSize(width: 5, height: 5)
-        v.layer.shadowOpacity = 0.7
-        v.layer.shadowRadius = 10.0
-        
+        let image = UIImage(named: "hotNews")
+        let imageView = UIImageView(image: image!)
+        imageView.frame = CGRect(x: 0, y: 10, width: 350, height: 130)
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+
+        v.addSubview(imageView)        
         return v
     }()
     
