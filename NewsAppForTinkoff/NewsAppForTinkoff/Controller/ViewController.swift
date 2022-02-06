@@ -111,11 +111,11 @@ class ViewController: UIViewController {
 //            button.contentMode = .scaleAspectFit
 //    //
 //            button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-//            
+//
 //            return button
 //        }()
 //    }
-//    
+//
 //    @objc func buttonAction(_ sender: UIButton!) {
 //         print("button pressed")
 //     }
@@ -132,7 +132,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.reuseID, for: indexPath) as? NewsTableViewCell
         // достатть из кэша
         
+        //
+        
+//        viewModel.loadFromUD()
+        
+        //
         let news = viewModel.newsVM[indexPath.row]
+//        let news = viewModel.newsVM[0]
         cell?.newsVM = news
         //        return cell ?? UITableViewCell()
         // костыль

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct NewsViewModel {
+struct NewsViewModel: Codable {
     
     
     var news: News
@@ -55,3 +55,5 @@ struct NewsViewModel {
     }
     
 }
+
+

@@ -9,6 +9,12 @@ import Foundation
 
 // кэширование
 // выбор изображение - tableView or collectionView
+
+
+//
+
+let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("news.plist")
+
 class NewsListViewModel {
     var newsVM = [NewsViewModel]()
     
@@ -21,7 +27,9 @@ class NewsListViewModel {
                 return
             }
             let newsVM = news.map(NewsViewModel.init)
-            
+            //
+            //
+            self.saveInUD()
             // async для загрузки
             // постраничная загрузка?
             DispatchQueue.main.async {
@@ -31,5 +39,31 @@ class NewsListViewModel {
         }
     }
     
+    ///@IBAction func
+    ///@IBAction func
+
+    func saveInUD() {
+        let encoder = PropertyListEncoder()
+        
+        do {
+            let data = try encoder.encode(newsVM)
+            try data.write(to: dataFilePath!)
+        } catch {
+            print("error encoding \(error)")
+        }
+        
+        print(dataFilePath)
+    }
+    
+    func loadFromUD() {
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            let decoder = PropertyListDecoder()
+            do {
+                newsVM = try decoder.decode([NewsViewModel].self, from: data)
+            } catch {
+                print("error was \(error)")
+            }
+        }
+    }
   
 }

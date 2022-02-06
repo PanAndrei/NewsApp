@@ -8,13 +8,12 @@
 import Foundation
 
 //struct News: Decodable {
-class News: Decodable {
+class News: Codable {
     // автор или ID новости для идентификации - а бывает что айди и нет
     let author: String?
     let title: String?
     let description: String?
     let urlToImage: String?
-    // картинка на случай отсутствия интернета
     let url: String?
     
     // showes
