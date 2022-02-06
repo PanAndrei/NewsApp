@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct News: Decodable {
+//struct News: Decodable {
+class News: Decodable {
     // автор или ID новости для идентификации - а бывает что айди и нет
     let author: String?
     let title: String?
@@ -15,6 +16,23 @@ struct News: Decodable {
     let urlToImage: String?
     // картинка на случай отсутствия интернета
     let url: String?
+    
+    // showes
+    
+    var numberOfShowes: Int?
+    
+    var stringShowes: String?
+    
+    func setNum() {
+        if numberOfShowes == nil {
+            numberOfShowes = 0
+        }
+    }
+    
+    func addShow() {
+        numberOfShowes! += 1
+    }
+    
 }
 
 // 20 news

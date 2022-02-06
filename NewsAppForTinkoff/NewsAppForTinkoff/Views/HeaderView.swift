@@ -32,14 +32,14 @@ final class HeaderView: UIView {
     
     // optional
     // а надо ли
-    private lazy var plusImage: UIImageView = {
-        let v = UIImageView()
-        v.translatesAutoresizingMaskIntoConstraints = false
-        v.contentMode = .scaleAspectFit
-        let config = UIImage.SymbolConfiguration(pointSize: fontSize, weight: .bold)
-        v.image = UIImage(systemName: "plus", withConfiguration: config)?.withRenderingMode(.alwaysOriginal)
-        return v
-    }()
+//    private lazy var plusImage: UIImageView = {
+//        let v = UIImageView()
+//        v.translatesAutoresizingMaskIntoConstraints = false
+//        v.contentMode = .scaleAspectFit
+//        let config = UIImage.SymbolConfiguration(pointSize: fontSize, weight: .bold)
+//        v.image = UIImage(systemName: "plus", withConfiguration: config)?.withRenderingMode(.alwaysOriginal)
+//        return v
+//    }()
     
     private lazy var subheadlineLabel: UILabel = {
         let v = UILabel()
@@ -53,7 +53,8 @@ final class HeaderView: UIView {
     }()
     
     private lazy var headerStackView: UIStackView = {
-        let v = UIStackView(arrangedSubviews: [globeImage, headingLabel, plusImage])
+        // plusimage
+        let v = UIStackView(arrangedSubviews: [globeImage, headingLabel])
         v.translatesAutoresizingMaskIntoConstraints = false
         v.axis = .horizontal
         return v

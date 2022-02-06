@@ -13,8 +13,8 @@ final class NewsTableViewCell: UITableViewCell {
         didSet {
             if let newsVM = newsVM {
                 titleLabel.text = newsVM.title
-                // установить счетчик и преобразователь в стринг
-                numberOfClicsLabel.text = "0"
+                numberOfClicsLabel.text = newsVM.stringShowes
+                
                 NetworkManager.shared.getImage(urlString: newsVM.urlToImage) { (data) in
                     guard let data = data else {
                         // картинка когда нет интернета

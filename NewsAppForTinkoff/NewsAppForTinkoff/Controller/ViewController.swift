@@ -34,6 +34,15 @@ class ViewController: UIViewController {
         fetchNews()
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
+    
+    
+    
     func setupView() {
         view.backgroundColor = .white
         view.addSubview(headerView)
@@ -74,9 +83,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.reuseID, for: indexPath) as? NewsTableViewCell
         // достатть из кэша
+        
         let news = viewModel.newsVM[indexPath.row]
         cell?.newsVM = news
-        return cell ?? UITableViewCell()
+//        return cell ?? UITableViewCell()
+        // костыль
+        return indexPath.row < 21 ? cell ?? UITableViewCell() : UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -91,6 +103,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         // or .formScreen
         safariViewController.modalPresentationStyle = .fullScreen
         present(safariViewController, animated: true)
+        
+        viewModel.newsVM[indexPath.row].addShow()
+        reloadInputViews()
     }
     
 }

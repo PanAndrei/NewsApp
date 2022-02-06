@@ -28,7 +28,7 @@ class NetworkManager {
             return
             // from cache
         }
-        
+
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard error == nil else {
                 // обработка ошибок может тут уведомление
@@ -41,7 +41,7 @@ class NetworkManager {
                 completion(nil)
                 return
             }
-            
+
             let newsPack = try? JSONDecoder().decode(NewsPack.self, from: data)
             newsPack == nil ? completion(nil) : completion(newsPack!.articles)
         }.resume()

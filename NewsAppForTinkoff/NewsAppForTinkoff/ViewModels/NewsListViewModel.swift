@@ -21,6 +21,7 @@ class NewsListViewModel {
                 return
             }
             let newsVM = news.map(NewsViewModel.init)
+            
             // async для загрузки
             // постраничная загрузка?
             DispatchQueue.main.async {

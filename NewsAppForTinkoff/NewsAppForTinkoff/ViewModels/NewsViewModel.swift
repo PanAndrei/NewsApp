@@ -8,7 +8,9 @@
 import Foundation
 
 struct NewsViewModel {
-    let news: News
+    
+    
+    var news: News
     
     // кэширование в юзердефолтс ?
     var author: String {
@@ -31,4 +33,22 @@ struct NewsViewModel {
     var urlToImage: String {
         return news.urlToImage ?? "https://img2.freepng.ru/20180609/guv/kisspng-92-news-newspaper-live-television-express-news-5b1b6ba7a245d3.1810649915285236876647.jpg"
     }
+    
+    var numberOfShowes: Int {
+        return news.numberOfShowes!
+    }
+    
+    func addShow()  {
+        news.addShow()
+    }
+    
+    var stringShowes: String {
+        news.setNum()
+        if news.numberOfShowes == 1 {
+            return "It was shown \(news.numberOfShowes!) time"
+        } else {
+            return "It was shown \(news.numberOfShowes!) times"
+        }
+    }
+    
 }
