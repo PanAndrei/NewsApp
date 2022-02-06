@@ -15,6 +15,11 @@ class ViewController: UIViewController {
     ///
     var refreshControl: UIRefreshControl!
     
+//    var newsPack = viewModel.newsVM
+    //
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("news.plist")
+//
+    
     private lazy var headerView: HeaderView = {
         let v = HeaderView(fontSize: 32)
         return v
@@ -33,7 +38,7 @@ class ViewController: UIViewController {
     //
 //    override func loadView() {
 //        super.loadView()
-//        viewModel.saveInUD()
+//        fetchNews()
 //    }
     //
     
@@ -42,10 +47,7 @@ class ViewController: UIViewController {
         
         setupView()
         fetchNews()
-        
-        //
-        fetchNews()
-        //
+
         
         setupRefresh()
         //
@@ -57,6 +59,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+//        fetchNews()
     }
     
     
@@ -91,8 +94,12 @@ class ViewController: UIViewController {
     func fetchNews() {
         viewModel.getNews { (_) in
             self.tableView.reloadData()
+            self.saveInUD()
         }
 //        viewModel.saveInUD()
+//        saveInUD()
+//        saveInUD()
+//        self.tableView.reloadData()
     }
     
     func setupRefresh() {
@@ -116,24 +123,7 @@ class ViewController: UIViewController {
         refreshControl.endRefreshing()
     }
     
-    //
-//    func setButtonRefresh() {
-//         lazy var buttonRefresh: UIButton = {
-//            let button = UIButton()
-//            button.translatesAutoresizingMaskIntoConstraints = false
-//             let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold)
-//            button.setImage(UIImage(systemName: "goforward", withConfiguration: config)?.withRenderingMode(.alwaysOriginal), for: .normal)
-//            button.contentMode = .scaleAspectFit
-//    //
-//            button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-//
-//            return button
-//        }()
-//    }
-//
-//    @objc func buttonAction(_ sender: UIButton!) {
-//         print("button pressed")
-//     }
+
     
 }
 
@@ -147,35 +137,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.reuseID, for: indexPath) as? NewsTableViewCell
         // достатть из кэша
         
-        //
-        
-//        viewModel.loadFromUD()
-        
-        // работает но счетчик на ноль сбрасывает
-//        viewModel.loadFromUD()
+
         let news = viewModel.newsVM[indexPath.row]
         
-        //
-        
-        
-        //
-        
-//        var newsArr = viewModel.newsVM
-//        var news = viewModel.newsVM[indexPath.row]
-////
-//        if newsArr.isEmpty {
-//            let news = viewModel.newsVM[indexPath.row]
-//            viewModel.saveInUD()
-//        } else {
-//            viewModel.loadFromUD()
-//            let news = viewModel.newsVM[indexPath.row]
-//        }
-        //
+
         
 //        let news = viewModel.newsVM[0]
         cell?.newsVM = news
         return cell ?? UITableViewCell()
-        // костыль
 //        return indexPath.row < 21 ? cell ?? UITableViewCell() : UITableViewCell()
     }
     
@@ -193,10 +162,43 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         present(safariViewController, animated: true)
         
         viewModel.newsVM[indexPath.row].addShow()
+        saveInUD()
         reloadInputViews()
         
     }
     
 }
 
+//
+//
+//
 
+extension ViewController {
+    
+
+    
+    func saveInUD() {
+        let encoder = PropertyListEncoder()
+        
+        do {
+            let data = try encoder.encode(viewModel.newsVM)
+            try data.write(to: dataFilePath!)
+        } catch {
+            print("error encoding \(error)")
+        }
+        
+        print("data saved")
+    }
+    
+    func loadFromUD() {
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            let decoder = PropertyListDecoder()
+            do {
+                viewModel.newsVM = try decoder.decode([NewsViewModel].self, from: data)
+            } catch {
+                print("error was \(error)")
+            }
+        }
+    }
+    
+}

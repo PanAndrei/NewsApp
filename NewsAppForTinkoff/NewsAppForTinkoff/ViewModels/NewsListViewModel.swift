@@ -13,7 +13,7 @@ import Foundation
 
 //
 
-let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("news.plist")
+//let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("news.plist")
 
 class NewsListViewModel {
     var newsVM = [NewsViewModel]()
@@ -37,7 +37,7 @@ class NewsListViewModel {
                 completion(newsVM)
             }
             newsVM.map { $0.setCount() }
-            self.saveInUD()
+//            self.saveInUD()
         }
 //        self.saveInUD()
     }
@@ -45,28 +45,28 @@ class NewsListViewModel {
     ///@IBAction func
     ///@IBAction func
 
-    func saveInUD() {
-        let encoder = PropertyListEncoder()
-        
-        do {
-            let data = try encoder.encode(newsVM)
-            try data.write(to: dataFilePath!)
-        } catch {
-            print("error encoding \(error)")
-        }
-        
-        print("data saved")
-    }
-    
-    func loadFromUD() {
-        if let data = try? Data(contentsOf: dataFilePath!) {
-            let decoder = PropertyListDecoder()
-            do {
-                newsVM = try decoder.decode([NewsViewModel].self, from: data)
-            } catch {
-                print("error was \(error)")
-            }
-        }
-    }
+//    func saveInUD() {
+//        let encoder = PropertyListEncoder()
+//
+//        do {
+//            let data = try encoder.encode(newsVM)
+//            try data.write(to: dataFilePath!)
+//        } catch {
+//            print("error encoding \(error)")
+//        }
+//
+//        print("data saved")
+//    }
+//
+//    func loadFromUD() {
+//        if let data = try? Data(contentsOf: dataFilePath!) {
+//            let decoder = PropertyListDecoder()
+//            do {
+//                newsVM = try decoder.decode([NewsViewModel].self, from: data)
+//            } catch {
+//                print("error was \(error)")
+//            }
+//        }
+//    }
   
 }
